@@ -5,24 +5,37 @@
     <title>Vue Mastery</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
-    
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
   </head>
   <body>
     <div id="app">
-      <h1>{{ product }}</h1>
-      <img :src="image">
-      <p v-if="inStock">In stock</p>
-      <p v-else>Out of Stock</p>
+      <div class="nav-bar"></div>
+      
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <img :src="image">
+          </div>
+          <div class="product-info">
+            <!-- use double for the value of Vue app{{ }} -->
+            <h1>{{ product }}</h1> 
+            <!-- <p>I love {{ product}}</p> -->
+            <p v-if="inventory > 10">In stock</p>
+            <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out</p>
+            <p v-else>Out of stock</p>
+            <p v-if="onSale && inventory > 0">On Sale!</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- import main.js here -->
+    <!-- Import App -->
     <script src="./main.js"></script>
-    
-    <!-- mountedApp -->
+
+    <!-- Mount App here -->
     <script>
-      const mountedApp = app.mount('#app') // mount app via the id "app" from line 12
+      const mountedApp = app.mount('#app') //#app is referinig to line 12 id div id
     </script>
-      </body>
+  </body>
 </html>
